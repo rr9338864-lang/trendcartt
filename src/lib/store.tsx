@@ -20,7 +20,7 @@ import { getProductsByIds, type Product } from "@/data/catalog";
 export interface CartLine {
   productId: string;
   quantity: number;
-  variant?: string;
+  variant?: string | undefined;
 }
 
 interface StoreValue {
