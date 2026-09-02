@@ -10,6 +10,10 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { StoreProvider } from "@/lib/store";
+import { Toaster } from "@/components/ui/sonner";
+import { Logo } from "@/components/Logo";
+import { AffiliateNote } from "@/components/AffiliateNote";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -119,8 +123,53 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <StoreProvider>
+        <div className="flex min-h-screen flex-col bg-background">
+          <header className="sticky top-0 z-40 border-b border-line bg-background/90 backdrop-blur">
+            <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
+              <Logo />
+              <span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted sm:block">
+                Curated deals · Fitness · Fashion · Books
+              </span>
+            </div>
+          </header>
+          <main className="grow">
+            {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+            <Outlet />
+          </main>
+          <footer className="border-t border-line">
+            <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-3">
+              <div>
+                <Logo className="text-xl" />
+                <p className="mt-2 text-xs leading-relaxed text-ink-muted">
+                  A curated storefront of fitness, fashion and reading picks from trusted
+                  retailers.
+                </p>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">
+                  Categories
+                </p>
+                <ul className="mt-2 space-y-1 text-xs text-ink-muted">
+                  <li>Fitness &amp; Personal Care</li>
+                  <li>Fashion &amp; Lifestyle</li>
+                  <li>Books</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold">
+                  Disclosure
+                </p>
+                <AffiliateNote className="mt-2" />
+              </div>
+            </div>
+            <div className="border-t border-line py-4 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted">
+              © {new Date().getFullYear()} TrendCart
+            </div>
+          </footer>
+        </div>
+        <Toaster richColors position="bottom-right" />
+      </StoreProvider>
     </QueryClientProvider>
   );
 }
