@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { StoreProvider } from "@/lib/store";
 import { Toaster } from "@/components/ui/sonner";
+import { Logo } from "@/components/Logo";
+import { AffiliateNote } from "@/components/AffiliateNote";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
