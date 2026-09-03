@@ -1,5 +1,6 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { ExternalLink, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
+import { BuyNowButton } from "@/components/BuyNowButton";
 import { getProduct, relatedProducts } from "@/data/catalog";
 import { StarRating } from "@/components/StarRating";
 import { AffiliateNote } from "@/components/AffiliateNote";
@@ -41,7 +42,7 @@ export const Route = createFileRoute("/product/$slug")({
 
 function ProductDetail() {
   const { product, related } = Route.useLoaderData();
-  const { isWishlisted, toggleWishlist, addToCart } = useStore();
+  const { isWishlisted, toggleWishlist } = useStore();
   const saved = isWishlisted(product.id);
 
   return (

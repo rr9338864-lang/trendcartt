@@ -14,7 +14,7 @@ interface Props {
 }
 
 export function QuickView({ product, open, onOpenChange }: Props) {
-  const { isWishlisted, toggleWishlist, addToCart } = useStore();
+  const { isWishlisted, toggleWishlist } = useStore();
   const saved = isWishlisted(product.id);
 
   return (
