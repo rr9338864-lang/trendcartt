@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Heart, ExternalLink } from "lucide-react";
+import { Heart } from "lucide-react";
+import { BuyNowButton } from "@/components/BuyNowButton";
 import type { Product } from "@/data/catalog";
 import { StarRating } from "@/components/StarRating";
 import { useStore, formatPrice } from "@/lib/store";
