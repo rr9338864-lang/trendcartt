@@ -14,7 +14,7 @@ const badgeTone: Record<string, string> = {
 };
 
 export function ProductCard({ product, delay = 0 }: { product: Product; delay?: number }) {
-  const { isWishlisted, toggleWishlist, addToCart } = useStore();
+  const { isWishlisted, toggleWishlist } = useStore();
   const [quickOpen, setQuickOpen] = useState(false);
   const saved = isWishlisted(product.id);
 
