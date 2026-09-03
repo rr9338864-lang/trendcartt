@@ -83,15 +83,11 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
           >
             Quick View
           </button>
-          <a
-            href={product.affiliateUrl}
-            target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
-            onClick={() => addToCart(product)}
-            className="flex flex-1 items-center justify-center gap-1 rounded-lg bg-brand py-2 text-xs font-semibold text-brand-foreground transition-colors hover:bg-brand/90 active:scale-[0.98]"
-          >
-            Buy Now <ExternalLink size={11} />
-          </a>
+          <BuyNowButton
+            product={product}
+            iconSize={11}
+            className="flex-1 py-2 text-xs active:scale-[0.98]"
+          />
         </div>
       </div>
 
