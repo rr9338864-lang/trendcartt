@@ -1,7 +1,7 @@
 import { ExternalLink, Lock } from "lucide-react";
 import type { Product } from "@/data/catalog";
-import { hasAffiliateUrl } from "@/data/catalog";
 import { useStore } from "@/lib/store";
+import { useAffiliateUrl } from "@/lib/affiliate-links";
 
 interface Props {
   product: Product;
@@ -17,8 +17,9 @@ interface Props {
  */
 export function BuyNowButton({ product, className = "", iconSize = 12, label = "Buy Now" }: Props) {
   const { addToCart } = useStore();
+  const affiliateUrl = useAffiliateUrl(product);
 
-  if (!hasAffiliateUrl(product)) {
+  if (!affiliateUrl) {
     return (
       <button
         type="button"
@@ -33,7 +34,7 @@ export function BuyNowButton({ product, className = "", iconSize = 12, label = "
 
   return (
     <a
-      href={product.affiliateUrl}
+      href={affiliateUrl}
       target="_blank"
       rel="nofollow sponsored noopener noreferrer"
       onClick={() => addToCart(product)}
