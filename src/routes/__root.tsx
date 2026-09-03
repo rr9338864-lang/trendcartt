@@ -125,6 +125,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <StoreProvider>
+      <AffiliateLinksProvider>
         <div className="flex min-h-screen flex-col bg-background">
           <header className="sticky top-0 z-40 border-b border-line bg-background/90 backdrop-blur">
             <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
