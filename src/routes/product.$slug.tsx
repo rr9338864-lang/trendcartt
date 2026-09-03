@@ -52,6 +52,8 @@ function ProductDetail() {
           Home
         </Link>
         <span className="px-2">/</span>
+        <span>{getCategory(product.category)?.shortName ?? product.category}</span>
+        <span className="px-2">/</span>
         <span className="text-foreground">{product.subcategory}</span>
       </nav>
 
