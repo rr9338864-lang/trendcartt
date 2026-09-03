@@ -1,6 +1,7 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { ExternalLink, Heart } from "lucide-react";
-import { getProduct, relatedProducts } from "@/data/catalog";
+import { Heart } from "lucide-react";
+import { BuyNowButton } from "@/components/BuyNowButton";
+import { getProduct, relatedProducts, getCategory } from "@/data/catalog";
 import { StarRating } from "@/components/StarRating";
 import { AffiliateNote } from "@/components/AffiliateNote";
 import { ProductCard } from "@/components/ProductCard";
@@ -41,7 +42,7 @@ export const Route = createFileRoute("/product/$slug")({
 
 function ProductDetail() {
   const { product, related } = Route.useLoaderData();
-  const { isWishlisted, toggleWishlist, addToCart } = useStore();
+  const { isWishlisted, toggleWishlist } = useStore();
   const saved = isWishlisted(product.id);
 
   return (
@@ -50,6 +51,8 @@ function ProductDetail() {
         <Link to="/" className="hover:text-gold">
           Home
         </Link>
+        <span className="px-2">/</span>
+        <span>{getCategory(product.category)?.shortName ?? product.category}</span>
         <span className="px-2">/</span>
         <span className="text-foreground">{product.subcategory}</span>
       </nav>
@@ -95,15 +98,7 @@ function ProductDetail() {
           </ul>
 
           <div className="mt-6 flex flex-wrap gap-2">
-            <a
-              href={product.affiliateUrl}
-              target="_blank"
-              rel="nofollow sponsored noopener noreferrer"
-              onClick={() => addToCart(product)}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground transition-colors hover:bg-brand/90"
-            >
-              Buy Now <ExternalLink size={13} />
-            </a>
+            <BuyNowButton product={product} iconSize={13} className="px-5 py-3 text-sm" />
             <button
               type="button"
               onClick={() => toggleWishlist(product)}
