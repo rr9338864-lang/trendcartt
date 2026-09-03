@@ -39,7 +39,7 @@ export interface Product {
   discount: number;
   rating: number;
   reviewCount: number;
-  /** placeholder — swap for a real affiliate URL later */
+  /** product-specific affiliate URL; empty string = not configured yet */
   affiliateUrl: string;
   variants?: ProductVariant[];
   featured: boolean;
@@ -826,6 +826,11 @@ export const trendingProducts = products.filter((p) => p.trending);
 export const bestSellers = products.filter((p) => p.bestSeller);
 export const dealProducts = products.filter((p) => p.deal);
 export const featuredProducts = products.filter((p) => p.featured);
+
+/** True when the product has a real affiliate destination configured. */
+export function hasAffiliateUrl(product: Product): boolean {
+  return typeof product.affiliateUrl === "string" && /^https?:\/\//.test(product.affiliateUrl);
+}
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
