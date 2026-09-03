@@ -1,7 +1,7 @@
 import { ExternalLink, Lock } from "lucide-react";
 import type { Product } from "@/data/catalog";
-import { hasAffiliateUrl } from "@/data/catalog";
 import { useStore } from "@/lib/store";
+import { useAffiliateUrl } from "@/lib/affiliate-links";
 
 interface Props {
   product: Product;
