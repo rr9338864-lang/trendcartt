@@ -17,8 +17,9 @@ interface Props {
  */
 export function BuyNowButton({ product, className = "", iconSize = 12, label = "Buy Now" }: Props) {
   const { addToCart } = useStore();
+  const affiliateUrl = useAffiliateUrl(product);
 
-  if (!hasAffiliateUrl(product)) {
+  if (!affiliateUrl) {
     return (
       <button
         type="button"
