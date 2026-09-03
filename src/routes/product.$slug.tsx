@@ -95,15 +95,7 @@ function ProductDetail() {
           </ul>
 
           <div className="mt-6 flex flex-wrap gap-2">
-            <a
-              href={product.affiliateUrl}
-              target="_blank"
-              rel="nofollow sponsored noopener noreferrer"
-              onClick={() => addToCart(product)}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-brand px-5 py-3 text-sm font-semibold text-brand-foreground transition-colors hover:bg-brand/90"
-            >
-              Buy Now <ExternalLink size={13} />
-            </a>
+            <BuyNowButton product={product} iconSize={13} className="px-5 py-3 text-sm" />
             <button
               type="button"
               onClick={() => toggleWishlist(product)}

@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ExternalLink, Heart } from "lucide-react";
+import { Heart } from "lucide-react";
+import { BuyNowButton } from "@/components/BuyNowButton";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import type { Product } from "@/data/catalog";
 import { StarRating } from "@/components/StarRating";
