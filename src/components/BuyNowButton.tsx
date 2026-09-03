@@ -34,7 +34,7 @@ export function BuyNowButton({ product, className = "", iconSize = 12, label = "
 
   return (
     <a
-      href={product.affiliateUrl}
+      href={affiliateUrl}
       target="_blank"
       rel="nofollow sponsored noopener noreferrer"
       onClick={() => addToCart(product)}
