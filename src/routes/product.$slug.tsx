@@ -1,7 +1,7 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { Heart } from "lucide-react";
 import { BuyNowButton } from "@/components/BuyNowButton";
-import { getProduct, relatedProducts } from "@/data/catalog";
+import { getProduct, relatedProducts, getCategory } from "@/data/catalog";
 import { StarRating } from "@/components/StarRating";
 import { AffiliateNote } from "@/components/AffiliateNote";
 import { ProductCard } from "@/components/ProductCard";
