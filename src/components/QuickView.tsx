@@ -64,15 +64,7 @@ export function QuickView({ product, open, onOpenChange }: Props) {
             </ul>
 
             <div className="mt-5 flex flex-wrap gap-2">
-              <a
-                href={product.affiliateUrl}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                onClick={() => addToCart(product)}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-brand px-4 py-2.5 text-xs font-semibold text-brand-foreground transition-colors hover:bg-brand/90"
-              >
-                Buy Now <ExternalLink size={12} />
-              </a>
+              <BuyNowButton product={product} className="px-4 py-2.5 text-xs" />
               <Link
                 to="/product/$slug"
                 params={{ slug: product.slug }}
