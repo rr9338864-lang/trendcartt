@@ -30,8 +30,12 @@ function AdminPage() {
     void supabase.auth.getSession().then(({ data }) => {
       setSignedIn(!!data.session);
       setReady(true);
+      if (data.session) void supabase.rpc("claim_admin");
     });
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => setSignedIn(!!session));
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      setSignedIn(!!session);
+      if (session) void supabase.rpc("claim_admin");
+    });
     return () => sub.subscription.unsubscribe();
   }, []);
 
@@ -43,18 +47,29 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [mode, setMode] = useState<"signin" | "signup">("signin");
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } =
+      mode === "signup"
+        ? await supabase.auth.signUp({
+            email,
+            password,
+            options: { emailRedirectTo: `${window.location.origin}/admin` },
+          })
+        : await supabase.auth.signInWithPassword({ email, password });
     setBusy(false);
     if (error) toast.error(error.message);
+    else if (mode === "signup") toast.success("Account created — signing you in…");
   }
 
   return (
     <div className="container mx-auto max-w-sm px-4 py-16">
-      <h1 className="mb-6 text-2xl font-semibold">Product Manager sign in</h1>
+      <h1 className="mb-6 text-2xl font-semibold">
+        {mode === "signup" ? "Create Product Manager account" : "Product Manager sign in"}
+      </h1>
       <form onSubmit={submit} className="space-y-4">
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
@@ -62,15 +77,30 @@ function SignIn() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <Input
+            id="password"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            minLength={6}
+          />
         </div>
         <Button type="submit" disabled={busy} className="w-full">
-          {busy ? "Signing in…" : "Sign in"}
+          {busy ? "Please wait…" : mode === "signup" ? "Create account" : "Sign in"}
         </Button>
       </form>
+      <button
+        type="button"
+        className="mt-4 w-full text-sm text-muted-foreground underline"
+        onClick={() => setMode(mode === "signup" ? "signin" : "signup")}
+      >
+        {mode === "signup" ? "Already have an account? Sign in" : "First time? Create your admin account"}
+      </button>
     </div>
   );
 }
+
 
 function LinkManager() {
   const [values, setValues] = useState<Record<string, string>>({});
