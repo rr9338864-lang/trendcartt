@@ -171,7 +171,8 @@ function RootComponent() {
           </footer>
         </div>
         <Toaster richColors position="bottom-right" />
-      </StoreProvider>
+       </AffiliateLinksProvider>
+       </StoreProvider>
     </QueryClientProvider>
   );
 }
