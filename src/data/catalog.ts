@@ -243,7 +243,7 @@ const seeds: ProductSeed[] = [
     dealLabel: "Starter pick",
   },
   {
-    name: "PeakForm Whey — Vanilla",
+    name: "whey protien",
     slug: "peakform-whey-vanilla",
     category: "fitness-personal-care",
     subcategory: "Protein & Nutrition",
