@@ -82,7 +82,7 @@ function HomePage() {
               href="#deals"
               className="inline-flex items-center gap-2 rounded-lg border border-line px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-brand/50"
             >
-              Today's deals <BadgePercent size={14} />
+              Today's deals{"\n"}<BadgePercent size={14} />
             </a>
           </div>
         </div>
