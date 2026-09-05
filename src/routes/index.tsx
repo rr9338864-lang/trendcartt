@@ -11,6 +11,8 @@ import {
 import { ProductGrid } from "@/components/ProductGrid";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AffiliateNote } from "@/components/AffiliateNote";
+import { ShopBrowser } from "@/components/ShopBrowser";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -120,6 +122,12 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Browse all */}
+      <section id="browse" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-4">
+        <SectionHeading title="Browse all products" eyebrow="Search & filter" />
+        <ShopBrowser />
+      </section>
+
       {/* Trending */}
       <section id="trending" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-14">
         <SectionHeading
@@ -129,6 +137,7 @@ function HomePage() {
         />
         <ProductGrid products={trendingProducts.slice(0, 8)} />
       </section>
+
 
       {/* Deals strip */}
       <section id="deals" className="scroll-mt-20 border-y border-line bg-surface">
