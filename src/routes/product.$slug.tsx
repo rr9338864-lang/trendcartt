@@ -1,5 +1,5 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { Heart } from "lucide-react";
+import { Check, Heart } from "lucide-react";
 import { BuyNowButton } from "@/components/BuyNowButton";
 import { getProduct, relatedProducts, getCategory } from "@/data/catalog";
 import { StarRating } from "@/components/StarRating";
