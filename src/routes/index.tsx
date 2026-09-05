@@ -11,6 +11,8 @@ import {
 import { ProductGrid } from "@/components/ProductGrid";
 import { SectionHeading } from "@/components/SectionHeading";
 import { AffiliateNote } from "@/components/AffiliateNote";
+import { ShopBrowser } from "@/components/ShopBrowser";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
