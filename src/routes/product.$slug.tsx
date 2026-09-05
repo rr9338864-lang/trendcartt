@@ -1,5 +1,5 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { Heart } from "lucide-react";
+import { Check, Heart } from "lucide-react";
 import { BuyNowButton } from "@/components/BuyNowButton";
 import { getProduct, relatedProducts, getCategory } from "@/data/catalog";
 import { StarRating } from "@/components/StarRating";
@@ -74,7 +74,12 @@ function ProductDetail() {
             {product.name}
           </h1>
           <StarRating rating={product.rating} reviewCount={product.reviewCount} className="mt-3" />
-          <p className="mt-4 text-sm text-ink-muted">{product.description}</p>
+          <div className="mt-4">
+            <h2 className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-muted">
+              About this product
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-ink-muted">{product.description}</p>
+          </div>
 
           <div className="mt-5 flex items-baseline gap-3">
             <span className="text-3xl font-bold text-foreground">{formatPrice(product.price)}</span>
@@ -88,14 +93,22 @@ function ProductDetail() {
             )}
           </div>
 
-          <ul className="mt-5 space-y-1.5 text-sm text-ink-muted">
-            {product.features.map((f) => (
-              <li key={f} className="flex gap-2">
-                <span className="text-mint">—</span>
-                {f}
-              </li>
-            ))}
-          </ul>
+          {product.features.length > 0 && (
+            <div className="mt-6 rounded-xl border border-line bg-surface p-4">
+              <h2 className="font-mono text-[10px] uppercase tracking-[0.18em] text-gold">
+                Key highlights
+              </h2>
+              <ul className="mt-3 space-y-2 text-sm text-ink-muted">
+                {product.features.map((f) => (
+                  <li key={f} className="flex gap-2">
+                    <Check size={14} className="mt-0.5 shrink-0 text-mint" />
+                    <span className="leading-relaxed">{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
 
           <div className="mt-6 flex flex-wrap gap-2">
             <BuyNowButton product={product} iconSize={13} className="px-5 py-3 text-sm" />
