@@ -92,7 +92,7 @@ function img(slug: string): string {
 /* Categories                                                          */
 /* ------------------------------------------------------------------ */
 
-export const categories: Category[] = [
+const allCategories: Category[] = [
   {
     slug: "fitness-personal-care",
     name: "Fitness & Personal Care",
@@ -151,8 +151,15 @@ export const categories: Category[] = [
   },
 ];
 
+/** Categories hidden from the public storefront (data kept for future use). */
+const hiddenCategories: CategorySlug[] = ["books"];
+
+export const categories: Category[] = allCategories.filter(
+  (c) => !hiddenCategories.includes(c.slug),
+);
+
 export function getCategory(slug: string): Category | undefined {
-  return categories.find((c) => c.slug === slug);
+  return allCategories.find((c) => c.slug === slug);
 }
 
 /* ------------------------------------------------------------------ */
@@ -816,7 +823,9 @@ const seeds: ProductSeed[] = [
   },
 ];
 
-export const products: Product[] = seeds.map(build);
+export const products: Product[] = seeds
+  .map(build)
+  .filter((p) => !hiddenCategories.includes(p.category));
 
 /* ------------------------------------------------------------------ */
 /* Selectors                                                           */
@@ -904,7 +913,7 @@ export interface Guide {
   productSlugs: string[];
 }
 
-export const guides: Guide[] = [
+const allGuides: Guide[] = [
   {
     slug: "best-fitness-essentials-for-beginners",
     title: "Best Fitness Essentials for Beginners",
@@ -955,6 +964,10 @@ export const guides: Guide[] = [
     productSlugs: ["the-quiet-ledger", "the-founder-playbook", "compound-money", "the-lantern-district"],
   },
 ];
+
+export const guides: Guide[] = allGuides.filter(
+  (g) => !hiddenCategories.includes(g.category),
+);
 
 export function getGuide(slug: string): Guide | undefined {
   return guides.find((g) => g.slug === slug);

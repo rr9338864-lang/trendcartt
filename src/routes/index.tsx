@@ -17,17 +17,17 @@ import { ShopBrowser } from "@/components/ShopBrowser";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "TrendCart — Curated Deals on Fitness, Fashion & Books" },
+      { title: "TrendCart — Curated Deals on Fitness & Fashion" },
       {
         name: "description",
         content:
-          "TrendCart is a curated shopping storefront: trending fitness gear, fashion staples and books, hand-picked from trusted retailers.",
+          "TrendCart is a curated shopping storefront: trending fitness gear and fashion staples, hand-picked from trusted retailers.",
       },
-      { property: "og:title", content: "TrendCart — Curated Deals on Fitness, Fashion & Books" },
+      { property: "og:title", content: "TrendCart — Curated Deals on Fitness & Fashion" },
       {
         property: "og:description",
         content:
-          "Trending fitness gear, fashion staples and books, hand-picked from trusted retailers.",
+          "Trending fitness gear and fashion staples, hand-picked from trusted retailers.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -70,7 +70,7 @@ function HomePage() {
             className="mt-4 max-w-xl animate-rise text-sm leading-relaxed text-ink-muted sm:text-base"
             style={{ animationDelay: "160ms" }}
           >
-            TrendCart hand-picks fitness gear, fashion staples and books from trusted retailers —
+            TrendCart hand-picks fitness gear and fashion staples from trusted retailers —
             so you skip the endless scrolling and go straight to what's worth buying.
           </p>
           <div className="mt-8 flex animate-rise flex-wrap gap-3" style={{ animationDelay: "240ms" }}>

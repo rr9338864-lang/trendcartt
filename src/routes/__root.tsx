@@ -131,7 +131,7 @@ function RootComponent() {
             <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
               <Logo />
               <span className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-ink-muted sm:block">
-                Curated deals · Fitness · Fashion · Books
+                Curated deals · Fitness · Fashion
               </span>
             </div>
           </header>
@@ -144,8 +144,7 @@ function RootComponent() {
               <div>
                 <Logo className="text-xl" />
                 <p className="mt-2 text-xs leading-relaxed text-ink-muted">
-                  A curated storefront of fitness, fashion and reading picks from trusted
-                  retailers.
+                  A curated storefront of fitness and fashion picks from trusted retailers.
                 </p>
               </div>
               <div>
@@ -155,7 +154,6 @@ function RootComponent() {
                 <ul className="mt-2 space-y-1 text-xs text-ink-muted">
                   <li>Fitness &amp; Personal Care</li>
                   <li>Fashion &amp; Lifestyle</li>
-                  <li>Books</li>
                 </ul>
               </div>
               <div>
