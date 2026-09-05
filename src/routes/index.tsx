@@ -17,13 +17,13 @@ import { ShopBrowser } from "@/components/ShopBrowser";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "TrendCart — Curated Deals on Fitness, Fashion & Books" },
+      { title: "TrendCart — Curated Deals on Fitness & Fashion" },
       {
         name: "description",
         content:
           "TrendCart is a curated shopping storefront: trending fitness gear and fashion staples, hand-picked from trusted retailers.",
       },
-      { property: "og:title", content: "TrendCart — Curated Deals on Fitness, Fashion & Books" },
+      { property: "og:title", content: "TrendCart — Curated Deals on Fitness & Fashion" },
       {
         property: "og:description",
         content:
