@@ -90,6 +90,12 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Browse all */}
+      <section id="browse" className="mx-auto max-w-6xl scroll-mt-20 px-4 pt-14 pb-4">
+        <SectionHeading title="Browse all products" eyebrow="Search & filter" />
+        <ShopBrowser />
+      </section>
+
       {/* Categories */}
       <section className="mx-auto max-w-6xl px-4 py-14">
         <SectionHeading title="Shop by category" eyebrow="Browse" />
@@ -120,12 +126,6 @@ function HomePage() {
             </a>
           ))}
         </div>
-      </section>
-
-      {/* Browse all */}
-      <section id="browse" className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-4">
-        <SectionHeading title="Browse all products" eyebrow="Search & filter" />
-        <ShopBrowser />
       </section>
 
       {/* Trending */}
