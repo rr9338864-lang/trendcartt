@@ -193,6 +193,4 @@ export function useStore(): StoreValue {
   return ctx;
 }
 
-export function formatPrice(value: number): string {
-  return `₹${value.toLocaleString("en-IN", { maximumFractionDigits: 0 })}`;
-}
+export { formatPrice } from "./format";
