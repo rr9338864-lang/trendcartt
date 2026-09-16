@@ -17,16 +17,19 @@ export type Database = {
       product_links: {
         Row: {
           affiliate_url: string
+          image_path: string | null
           product_id: string
           updated_at: string
         }
         Insert: {
           affiliate_url?: string
+          image_path?: string | null
           product_id: string
           updated_at?: string
         }
         Update: {
           affiliate_url?: string
+          image_path?: string | null
           product_id?: string
           updated_at?: string
         }
