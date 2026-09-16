@@ -5,6 +5,7 @@ import { BuyNowButton } from "@/components/BuyNowButton";
 import type { Product } from "@/data/catalog";
 import { StarRating } from "@/components/StarRating";
 import { useStore, formatPrice } from "@/lib/store";
+import { useProductImage } from "@/lib/affiliate-links";
 import { QuickView } from "@/components/QuickView";
 
 const badgeTone: Record<string, string> = {
@@ -16,6 +17,7 @@ const badgeTone: Record<string, string> = {
 export function ProductCard({ product, delay = 0 }: { product: Product; delay?: number }) {
   const { isWishlisted, toggleWishlist } = useStore();
   const [quickOpen, setQuickOpen] = useState(false);
+  const image = useProductImage(product);
   const saved = isWishlisted(product.id);
 
   return (
@@ -26,7 +28,7 @@ export function ProductCard({ product, delay = 0 }: { product: Product; delay?: 
       <div className="relative overflow-hidden">
         <Link to="/product/$slug" params={{ slug: product.slug }} aria-label={product.name}>
           <img
-            src={product.image}
+            src={image}
             alt={product.name}
             width={768}
             height={768}

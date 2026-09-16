@@ -6,6 +6,7 @@ import type { Product } from "@/data/catalog";
 import { StarRating } from "@/components/StarRating";
 import { useStore, formatPrice } from "@/lib/store";
 import { AffiliateNote } from "@/components/AffiliateNote";
+import { useProductImage } from "@/lib/affiliate-links";
 
 interface Props {
   product: Product;
@@ -16,13 +17,14 @@ interface Props {
 export function QuickView({ product, open, onOpenChange }: Props) {
   const { isWishlisted, toggleWishlist } = useStore();
   const saved = isWishlisted(product.id);
+  const image = useProductImage(product);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl border-line bg-surface p-0">
         <div className="grid gap-0 sm:grid-cols-2">
           <img
-            src={product.image}
+            src={image}
             alt={product.name}
             width={768}
             height={768}
